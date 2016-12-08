@@ -9,6 +9,10 @@ import {h, Component} from 'preact';
 
 /**
  * @name Modal
+ * @param {string} element The element id that will open the modal
+ * when clicked
+ * @param {function} onClose The function that will be called
+ * when modal is closed 
  */ 
 export default class Modal extends Component {
   state = {
