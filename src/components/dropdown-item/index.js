@@ -10,12 +10,10 @@ import {h, Component} from 'preact';
 /**
  * @name DropdownItem
  */ 
-class DropdownItem extends Component {
+export default class DropdownItem extends Component {
   render({ link, children }) {
 		return (
 			<li><a href={link ? link : false}>{children}</a></li>          
 		)
   }
 }
-
-module.exports = DropdownItem;

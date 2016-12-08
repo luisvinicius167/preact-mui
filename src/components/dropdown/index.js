@@ -11,7 +11,7 @@ import Button from '../button';
 /**
  * @name Dropdown
  */ 
-class Dropdown extends Component {
+export default class Dropdown extends Component {
   render({label, color, alignMenu, children}){
     return(
       <div class="mui-dropdown">
@@ -26,5 +26,3 @@ class Dropdown extends Component {
     )
   }
 }
-
-module.exports = Dropdown;

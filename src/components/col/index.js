@@ -9,7 +9,7 @@ import {h, Component} from 'preact';
 /**
  * @name Col
  */ 
-class Col extends Component {
+export default class Col extends Component {
   render( {children, md, mdOffset, xs, xsOffset, ...props} ) {
     let colMdClass = md ? `mui-col-md-${md}` : ''
       , colXsClass = xs ? `mui-col-xs-${xs}` : ''
@@ -25,5 +25,3 @@ class Col extends Component {
     )
   }
 }
-
-module.exports = Col;

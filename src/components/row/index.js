@@ -10,7 +10,7 @@ import {h, Component} from 'preact';
 /**
  * @name Row
  */ 
-class Row extends Component {
+export default class Row extends Component {
   render({ children, ...props}){
     return (
     <div class="mui-row" {...props}> 
@@ -19,5 +19,3 @@ class Row extends Component {
     )
   }
 }
-
-module.exports = Row;

@@ -10,7 +10,7 @@ import {h, Component} from 'preact';
 /**
  * @name Container
  */ 
-class Container extends Component {
+export default class Container extends Component {
   render({fluid, children, ...props}) {
     return (
       <div 
@@ -24,5 +24,3 @@ class Container extends Component {
     )
   }
 }
-
-module.exports = Container;

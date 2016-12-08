@@ -10,7 +10,7 @@ import {h, Component} from 'preact';
  * @name Button
  */ 
 
-class Button extends Component {
+export default class Button extends Component {
   render({color, variant, children, disabled, size, ...props}) {
     let variantClass = variant ? `mui-btn--${variant}` : ''
       , colorClass = color ? `mui-btn--${color}` : ''
@@ -28,5 +28,3 @@ class Button extends Component {
     )
   }
 }
-
-module.exports = Button;

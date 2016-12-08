@@ -10,7 +10,7 @@ import { h, Component } from 'preact';
 /**
  * @name Textarea
  */
-class Textarea extends Component {
+export default class Textarea extends Component {
   render({style, hint, label, required, defaultValue, floatingLabel, ...props}){
     let floatingLabelClass = floatingLabel ? ' mui-textfield--float-label' : '';
     let className = `mui-textfield ${floatingLabelClass}`.trim();
@@ -32,6 +32,4 @@ class Textarea extends Component {
     </div>
     )
   }
-} 
-
-module.exports = Textarea;
+}

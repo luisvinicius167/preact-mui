@@ -10,7 +10,7 @@ import {h, Component} from 'preact';
 /**
  * @name Select
  */ 
-class Select extends Component {
+export default class Select extends Component {
   render({style, children, label, defaultValue=false, disabled=false, ...props}){
     return (
       <div class="mui-select" style={style}>
@@ -23,5 +23,3 @@ class Select extends Component {
     )
   }
 }
-
-module.exports = Select;

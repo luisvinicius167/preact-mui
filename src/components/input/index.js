@@ -10,7 +10,7 @@ import { h, Component } from 'preact';
 /**
  * @name Input
  */
-class Input extends Component {
+export default class Input extends Component {
   render({style, hint, label, type='text', required, defaultValue, floatingLabel, ...props}){
     let floatingLabelClass = floatingLabel ? ' mui-textfield--float-label' : '';
     let className = `mui-textfield ${floatingLabelClass}`.trim();
@@ -33,6 +33,4 @@ class Input extends Component {
     </div>
     )
   }
-} 
-
-module.exports = Input;
+}

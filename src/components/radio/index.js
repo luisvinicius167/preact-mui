@@ -10,7 +10,7 @@ import {h, Component} from 'preact';
 /**
  * @name Radio
  */ 
-class Radio extends Component {
+export default class Radio extends Component {
   render({name, defaultChecked=false, label, disabled, ...props}){
     return (
     <div class="mui-radio">
@@ -28,5 +28,3 @@ class Radio extends Component {
     )
   }
 }
-
-module.exports = Radio;

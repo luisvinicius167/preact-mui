@@ -10,7 +10,7 @@ import {h, Component} from 'preact';
 /**
  * @name Option
  */ 
-class Option extends Component {
+export default class Option extends Component {
   render({label, value, ...props}){
     return(
       <option {...props} value={value}>
@@ -19,5 +19,3 @@ class Option extends Component {
     )
   }
 }
-
-module.exports = Option;

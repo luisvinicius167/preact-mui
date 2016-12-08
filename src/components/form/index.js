@@ -10,7 +10,7 @@ import {h, Component} from 'preact';
 /**
  * @name Form
  */ 
-class Form extends Component {
+export default class Form extends Component {
   render({legend, children, inline, ...props}){
     return(
     <form 
@@ -27,5 +27,3 @@ class Form extends Component {
     )
   }
 }
-
-module.exports = Form;

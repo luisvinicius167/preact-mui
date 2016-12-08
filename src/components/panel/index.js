@@ -10,7 +10,7 @@ import {h, Component} from 'preact';
 /**
  * @name Panel
  */ 
-class Panel extends Component {
+export default class Panel extends Component {
  render({children, ...props}){
    return (
      <div class="mui-panel" {...props}>
@@ -19,5 +19,3 @@ class Panel extends Component {
    )
  }
 }
-
-module.exports = Panel;

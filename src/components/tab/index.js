@@ -10,7 +10,7 @@ import {h, Component} from 'preact';
 /**
  * @name Tab
  */ 
-class Tab extends Component {
+export default class Tab extends Component {
  render({children, value, active, label, ...props}) {
    let activeClass = 'mui--is-active';
    return (
@@ -20,5 +20,3 @@ class Tab extends Component {
    )
  }
 }
-
-module.exports = Tab;

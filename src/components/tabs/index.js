@@ -9,7 +9,7 @@ import {h, Component} from 'preact';
 /**
  * @name Tabs
  */ 
-class Tabs extends Component {
+export default class Tabs extends Component {
   componentDidMount () {
     let initialIndex = this.props.initialSelectedIndex || 0;
     //VNode Component Children
@@ -37,5 +37,3 @@ class Tabs extends Component {
    )
  }
 }
-
-module.exports = Tabs;

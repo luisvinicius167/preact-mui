@@ -10,7 +10,7 @@ import { h, Component } from 'preact';
 /** 
  * @name Appbar
  */ 
-class Appbar extends Component {
+export default class Appbar extends Component {
 	render({children, ...props}){
 		return (
 			<div class="mui-appbar" {...props}>
@@ -19,5 +19,3 @@ class Appbar extends Component {
 		)
 	}
 };
-
-module.exports = Appbar;

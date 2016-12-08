@@ -10,7 +10,7 @@ import {h,Component} from 'preact';
 /**
  * @name Checkbox
  */ 
-class Checkbox extends Component {
+export default class Checkbox extends Component {
   render({name, defaultChecked=false, label, disabled, ...props}){
     return (
       <div class="mui-checkbox">
@@ -28,5 +28,3 @@ class Checkbox extends Component {
     )
   }
 }
-
-module.exports = Checkbox;
