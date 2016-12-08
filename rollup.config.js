@@ -34,8 +34,8 @@ export default {
       extensions: [
         '.js'
       ],
-      ignoreGlobal: false, // Default: false
-      sourceMap: false, // Default: true
+      ignoreGlobal: false,
+      sourceMap: false,
     })
 
   ]
