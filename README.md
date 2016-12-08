@@ -1,6 +1,6 @@
 # preact-mui
 
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/preact-mui)
+[![npm package](https://img.shields.io/badge/npm-v0.0.2-blue.svg)](https://www.npmjs.com/package/preact-mui)
 
 >The MUI CSS Preact library is designed from the ground up to be fast, small and developer-friendly. Using the MUI Preact library you can add MUI components to your Preact apps and switch seamlessly between MUI CSS/JS and MUI Preact even within the same app.
 
@@ -40,7 +40,7 @@ var Container = muicss.Container;
 #### Real life example:
 
 ```javascript
-import {h, Component} from 'preact';
+import {h, Component, render} from 'preact';
 import { Appbar, Button, Container } from 'preact-mui';
 
 class Example extends React.Component {
@@ -56,7 +56,7 @@ class Example extends React.Component {
   }
 }
 
-ReactDOM.render(<Example />, document.getElementById('example'));
+render(<Example />, document.getElementById('example'));
 ```
 
 ### API
