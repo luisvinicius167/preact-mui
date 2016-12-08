@@ -16,6 +16,7 @@ import Col from './components/col/index.js';
 import Panel from './components/panel/index.js';
 import Tabs from './components/tabs/index.js';
 import Tab from './components/tab/index.js';
+import Modal from './components/modal/index.js'
 
 module.exports = {
   Appbar,
@@ -35,5 +36,6 @@ module.exports = {
   Col,
   Panel,
   Tabs,
-  Tab
+  Tab,
+  Modal
 }
