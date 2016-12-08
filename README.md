@@ -69,7 +69,8 @@ Preact-MUI has the same API with React MUI, then you can check tre React API and
 ### Extra Components
 > Extra components that it's created on MUI Preact.js Library.
 
-##### Modal
+#### Modal
+
 ```javascript
 import {h, Component, render} from 'preact';
 import { Appbar, Button, Container, Modal } from 'preact-mui';
@@ -81,7 +82,7 @@ class Example extends React.Component {
         <Appbar></Appbar>
         <Container fluid={true}>
           <Modal 
-            element="buttonModal" 
+            openedBy="buttonModal"
             onClose={ 
               () => { 
                 console.log('')
