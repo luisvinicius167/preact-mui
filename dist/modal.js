@@ -1252,6 +1252,15 @@ var set = function set(object, property, value, receiver) {
 
 /**
  * @name Modal
+ * 
+ * @param {string} openedBy The element id that will open the modal
+ * when clicked
+ * 
+ * @param {string} closedBy The element id that will close the modal
+ * when clicked
+ * 
+ * @param {function} onClose The function that will be called
+ * when modal is closed 
  */
 
 var Modal = function (_Component) {
@@ -1274,10 +1283,16 @@ var Modal = function (_Component) {
   Modal.prototype.componentDidMount = function componentDidMount() {
     var _this2 = this;
 
-    if (this.props.element !== undefined) {
-      var element = document.querySelector('#' + this.props.element);
-      element.addEventListener('click', function () {
+    if (this.props.openedBy !== undefined) {
+      var openedBy = document.querySelector('#' + this.props.openedBy);
+      openedBy.addEventListener('click', function () {
         _this2.toggleModal();
+      });
+    } else if (this.props.closedBy !== undefined) {
+      var closedByElement = document.querySelector('#' + this.props.closedBy);
+      closedByElement.addEventListener('click', function () {
+        _this2.toggleModal();
+        mui.overlay('off');
       });
     }
   };

@@ -9,8 +9,13 @@ import {h, Component} from 'preact';
 
 /**
  * @name Modal
- * @param {string} element The element id that will open the modal
+ * 
+ * @param {string} openedBy The element id that will open the modal
  * when clicked
+ * 
+ * @param {string} closedBy The element id that will close the modal
+ * when clicked
+ * 
  * @param {function} onClose The function that will be called
  * when modal is closed 
  */ 
@@ -19,12 +24,18 @@ export default class Modal extends Component {
     isActive: false
   }
   componentDidMount ( ) {
-    if (this.props.element !== undefined) {
-      let element = document.querySelector(`#${this.props.element}`)
-      element.addEventListener('click', () => {
+    if (this.props.openedBy !== undefined) {
+      let openedBy = document.querySelector(`#${this.props.openedBy}`)
+      openedBy.addEventListener('click', () => {
         this.toggleModal();
       })
-    } 
+    } else if (this.props.closedBy !== undefined) {
+        let closedByElement = document.querySelector(`#${this.props.closedBy}`)
+        closedByElement.addEventListener('click', () => {
+          this.toggleModal();
+          mui.overlay('off');
+        })
+    }
   }
   toggleModal() {
     if (!this.state.isActive) {

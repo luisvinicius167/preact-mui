@@ -1122,35 +1122,124 @@ extend(Component.prototype, {
 
 });
 
-/** Render JSX into a `parent` Element.
- *	@param {VNode} vnode		A (JSX) VNode to render
- *	@param {Element} parent		DOM element to render into
- *	@param {Element} [merge]	Attempt to re-use an existing DOM tree rooted at `merge`
- *	@public
- *
- *	@example
- *	// render a div into <body>:
- *	render(<div id="hello">hello!</div>, document.body);
- *
- *	@example
- *	// render a "Thing" component into #foo:
- *	const Thing = ({ name }) => <span>{ name }</span>;
- *	render(<Thing name="one" />, document.querySelector('#foo'));
- */
+var asyncGenerator = function () {
+  function AwaitValue(value) {
+    this.value = value;
+  }
+
+  function AsyncGenerator(gen) {
+    var front, back;
+
+    function send(key, arg) {
+      return new Promise(function (resolve, reject) {
+        var request = {
+          key: key,
+          arg: arg,
+          resolve: resolve,
+          reject: reject,
+          next: null
+        };
+
+        if (back) {
+          back = back.next = request;
+        } else {
+          front = back = request;
+          resume(key, arg);
+        }
+      });
+    }
+
+    function resume(key, arg) {
+      try {
+        var result = gen[key](arg);
+        var value = result.value;
+
+        if (value instanceof AwaitValue) {
+          Promise.resolve(value.value).then(function (arg) {
+            resume("next", arg);
+          }, function (arg) {
+            resume("throw", arg);
+          });
+        } else {
+          settle(result.done ? "return" : "normal", result.value);
+        }
+      } catch (err) {
+        settle("throw", err);
+      }
+    }
+
+    function settle(type, value) {
+      switch (type) {
+        case "return":
+          front.resolve({
+            value: value,
+            done: true
+          });
+          break;
+
+        case "throw":
+          front.reject(value);
+          break;
+
+        default:
+          front.resolve({
+            value: value,
+            done: false
+          });
+          break;
+      }
+
+      front = front.next;
+
+      if (front) {
+        resume(front.key, front.arg);
+      } else {
+        back = null;
+      }
+    }
+
+    this._invoke = send;
+
+    if (typeof gen.return !== "function") {
+      this.return = undefined;
+    }
+  }
+
+  if (typeof Symbol === "function" && Symbol.asyncIterator) {
+    AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+      return this;
+    };
+  }
+
+  AsyncGenerator.prototype.next = function (arg) {
+    return this._invoke("next", arg);
+  };
+
+  AsyncGenerator.prototype.throw = function (arg) {
+    return this._invoke("throw", arg);
+  };
+
+  AsyncGenerator.prototype.return = function (arg) {
+    return this._invoke("return", arg);
+  };
+
+  return {
+    wrap: function (fn) {
+      return function () {
+        return new AsyncGenerator(fn.apply(this, arguments));
+      };
+    },
+    await: function (value) {
+      return new AwaitValue(value);
+    }
+  };
+}();
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 };
-
-
-
-
-
-
-
-
 
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -1164,31 +1253,6 @@ var _extends = Object.assign || function (target) {
   }
 
   return target;
-};
-
-var get = function get(object, property, receiver) {
-  if (object === null) object = Function.prototype;
-  var desc = Object.getOwnPropertyDescriptor(object, property);
-
-  if (desc === undefined) {
-    var parent = Object.getPrototypeOf(object);
-
-    if (parent === null) {
-      return undefined;
-    } else {
-      return get(parent, property, receiver);
-    }
-  } else if ("value" in desc) {
-    return desc.value;
-  } else {
-    var getter = desc.get;
-
-    if (getter === undefined) {
-      return undefined;
-    }
-
-    return getter.call(receiver);
-  }
 };
 
 var inherits = function (subClass, superClass) {
@@ -1206,14 +1270,6 @@ var inherits = function (subClass, superClass) {
   });
   if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 };
-
-
-
-
-
-
-
-
 
 var objectWithoutProperties = function (obj, keys) {
   var target = {};
@@ -1234,35 +1290,6 @@ var possibleConstructorReturn = function (self, call) {
 
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
-
-
-
-var set = function set(object, property, value, receiver) {
-  var desc = Object.getOwnPropertyDescriptor(object, property);
-
-  if (desc === undefined) {
-    var parent = Object.getPrototypeOf(object);
-
-    if (parent !== null) {
-      set(parent, property, value, receiver);
-    }
-  } else if ("value" in desc && desc.writable) {
-    desc.value = value;
-  } else {
-    var setter = desc.set;
-
-    if (setter !== undefined) {
-      setter.call(receiver, value);
-    }
-  }
-
-  return value;
-};
-
-/**
- * MUI Preact Appbar Module
- * @module preact/appbar
- */
 
 /** 
  * @name Appbar
@@ -1290,10 +1317,6 @@ var Appbar = function (_Component) {
 	return Appbar;
 }(Component);
 
-/**
- * MUI Preact Button Module
- * @module preact/button
- */
 /**
  * @name Button
  */
@@ -1332,11 +1355,6 @@ var Button = function (_Component) {
 }(Component);
 
 /**
- * MUI Preact Container Module
- * @module preact/container
- */
-
-/**
  * @name Container
  */
 
@@ -1366,11 +1384,6 @@ var Container = function (_Component) {
 }(Component);
 
 /**
- * MUI Preact Divider Module
- * @module preact/divider
- */
-
-/**
  * @name Divider
  */
 
@@ -1388,11 +1401,6 @@ var Divider = function (_Component) {
 
   return Divider;
 }(Component);
-
-/**
- * MUI Preact Dropdown Module
- * @module preact/dropdown
- */
 
 /**
  * @name Dropdown
@@ -1433,11 +1441,6 @@ var Dropdown = function (_Component) {
 }(Component);
 
 /**
- * MUI Preact DropdownItem Module
- * @module preact/dropdown-item
- */
-
-/**
  * @name DropdownItem
  */
 
@@ -1466,11 +1469,6 @@ var DropdownItem = function (_Component) {
 
   return DropdownItem;
 }(Component);
-
-/**
- * MUI Preact Form module
- * @module preact/form
- */
 
 /**
  * @name Form
@@ -1506,11 +1504,6 @@ var Form = function (_Component) {
 
   return Form;
 }(Component);
-
-/**
- * MUI Preact Input Module
- * @module preact/input
- */
 
 /**
  * @name Input
@@ -1561,11 +1554,6 @@ var Input = function (_Component) {
 }(Component);
 
 /**
- * MUI Preact Checkbox Module
- * @module preact/checkbox
- */
-
-/**
  * @name Checkbox
  */
 
@@ -1606,11 +1594,6 @@ var Checkbox = function (_Component) {
 }(Component);
 
 /**
- * MUI Preact Radio Module
- * @module preact/radio
- */
-
-/**
  * @name Radio
  */
 
@@ -1649,11 +1632,6 @@ var Radio = function (_Component) {
 
   return Radio;
 }(Component);
-
-/**
- * MUI Preact Select Module
- * @module preact/select
- */
 
 /**
  * @name Select
@@ -1697,11 +1675,6 @@ var Select = function (_Component) {
 }(Component);
 
 /**
- * MUI Preact Option Module
- * @module preact/option
- */
-
-/**
  * @name Option
  */
 
@@ -1727,11 +1700,6 @@ var Option = function (_Component) {
 
   return Option;
 }(Component);
-
-/**
- * MUI Preact Textarea Module
- * @module preact/textarea
- */
 
 /**
  * @name Textarea
@@ -1779,11 +1747,6 @@ var Textarea = function (_Component) {
 }(Component);
 
 /**
- * MUI Preact Row Module
- * @module preact/row
- */
-
-/**
  * @name Row
  */
 
@@ -1810,10 +1773,6 @@ var Row = function (_Component) {
 }(Component);
 
 /**
- * MUI Preact Col Module
- * @module preact/col
- */
-/**
  * @name Col
  */
 
@@ -1838,7 +1797,7 @@ var Col = function (_Component) {
         mdOffsetClass = mdOffset ? 'mui-col-md-offset-' + mdOffset : '',
         xsOffsetClass = xsOffset ? 'mui-col-xs-offset-' + xsOffset : '',
         className = (colMdClass + ' ' + colXsClass + ' ' + mdOffsetClass + ' ' + xsOffsetClass).trim();
-    
+    ;
 
     return h(
       'div',
@@ -1849,11 +1808,6 @@ var Col = function (_Component) {
 
   return Col;
 }(Component);
-
-/**
- * MUI Preact Panel Module
- * @module preact/panel
- */
 
 /**
  * @name Panel
@@ -1881,10 +1835,6 @@ var Panel = function (_Component) {
   return Panel;
 }(Component);
 
-/**
- * MUI Preact Tabs Module
- * @module preact/tabs
- */
 /**
  * @name Tabs
  */
@@ -1936,11 +1886,6 @@ var Tabs = function (_Component) {
 }(Component);
 
 /**
- * MUI Preact Tab Module
- * @module preact/tab
- */
-
-/**
  * @name Tab
  */
 
@@ -1977,12 +1922,16 @@ var Tab = function (_Component) {
 }(Component);
 
 /**
- * MUI Preact Modal Module
- * @module preact/modal
- */
-
-/**
  * @name Modal
+ * 
+ * @param {string} openedBy The element id that will open the modal
+ * when clicked
+ * 
+ * @param {string} closedBy The element id that will close the modal
+ * when clicked
+ * 
+ * @param {function} onClose The function that will be called
+ * when modal is closed 
  */
 
 var Modal = function (_Component) {
@@ -2005,10 +1954,16 @@ var Modal = function (_Component) {
   Modal.prototype.componentDidMount = function componentDidMount() {
     var _this2 = this;
 
-    if (this.props.element !== undefined) {
-      var element = document.querySelector('#' + this.props.element);
-      element.addEventListener('click', function () {
+    if (this.props.openedBy !== undefined) {
+      var openedBy = document.querySelector('#' + this.props.openedBy);
+      openedBy.addEventListener('click', function () {
         _this2.toggleModal();
+      });
+    } else if (this.props.closedBy !== undefined) {
+      var closedByElement = document.querySelector('#' + this.props.closedBy);
+      closedByElement.addEventListener('click', function () {
+        _this2.toggleModal();
+        mui.overlay('off');
       });
     }
   };
