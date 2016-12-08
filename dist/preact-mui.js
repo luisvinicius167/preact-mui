@@ -1976,6 +1976,114 @@ var Tab = function (_Component) {
   return Tab;
 }(Component);
 
+/**
+ * MUI Preact Modal Module
+ * @module preact/modal
+ */
+
+/**
+ * @name Modal
+ */
+
+var Modal = function (_Component) {
+  inherits(Modal, _Component);
+
+  function Modal() {
+    var _temp, _this, _ret;
+
+    classCallCheck(this, Modal);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.state = {
+      isActive: false
+    }, _temp), possibleConstructorReturn(_this, _ret);
+  }
+
+  Modal.prototype.componentDidMount = function componentDidMount() {
+    var _this2 = this;
+
+    if (this.props.element !== undefined) {
+      var element = document.querySelector('#' + this.props.element);
+      element.addEventListener('click', function () {
+        _this2.toggleModal();
+      });
+    }
+  };
+
+  Modal.prototype.toggleModal = function toggleModal() {
+    var _this3 = this;
+
+    if (!this.state.isActive) {
+      this.setState({ isActive: !this.state.isActive });
+      mui.overlay('on', this.base, { onclose: function () {
+          _this3.setState({ isActive: !_this3.state.isActive });
+          _this3.props.onClose();
+        } });
+    }
+  };
+
+  Modal.prototype.render = function render(_ref, _ref2) {
+    var isActive = _ref2.isActive;
+    var children = _ref.children,
+        props = objectWithoutProperties(_ref, ['children']);
+
+    return h(
+      'div',
+      { style: ModalPositions[this.props.position || 'center'], onClick: function () {
+          mui.overlay('off');
+        } },
+      isActive ? h(
+        'div',
+        props,
+        children
+      ) : null
+    );
+  };
+
+  return Modal;
+}(Component);
+
+var ModalPositions = {
+  center: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%'
+  },
+  centerLeft: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    width: '100%',
+    height: '100%'
+  },
+  centerRight: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    width: '100%',
+    height: '100%'
+  },
+  centerBottom: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%'
+  },
+  centerTop: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%'
+  }
+};
+
 module.exports = {
   Appbar: Appbar,
   Button: Button,
@@ -1994,7 +2102,8 @@ module.exports = {
   Col: Col,
   Panel: Panel,
   Tabs: Tabs,
-  Tab: Tab
+  Tab: Tab,
+  Modal: Modal
 };
 
 })));
