@@ -4,10 +4,10 @@ import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 
 export default {
-  entry : `src/components/${process.env.entry}/index.js`,
-  dest : `dist/${process.env.entry}.js`,
+  entry : `src/index.js`,
+  dest : `dist/preact-mui.js`,
   format : 'umd',
-  moduleName: `${process.env.entry}`,
+  moduleName: `preactMui`,
   plugins : [
     nodeResolve({
       jsnext: true
