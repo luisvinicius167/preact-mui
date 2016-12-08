@@ -83,12 +83,14 @@ class Example extends React.Component {
         <Container fluid={true}>
           <Modal 
             openedBy="buttonModal"
+            closedBy="buttonClose"
             onClose={ 
               () => { 
-                console.log('')
+                console.log('Modal Closed.')
               }
             }>
             <h1>I am a children of Modal Component</h1>
+            <Button id="buttonClose">Close Modal</Button>
           </Modal>
           <Button color="primary" id="buttonModal">Open Modal</Button>
         </Container>
