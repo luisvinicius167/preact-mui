@@ -1,0 +1,30 @@
+{
+  "name": "preact-mui",
+  "version": "0.0.1",
+  "description": "Preact MUI CSS Components.",
+  "main": "dist/preact-mui.js",
+  "jsnext:main":"dist/preact-ok.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luis Vinicius",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-es2015-classes": "^6.9.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-es2015-loose-rollup": "^7.0.0",
+    "babel-preset-es2015-minimal-rollup": "^2.0.0",
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "preact": "latest",
+    "rollup": "^0.34.1",
+    "rollup-plugin-babel": "^2.4.0",
+    "rollup-plugin-node-resolve": "^2.0.0"
+  }
+}
