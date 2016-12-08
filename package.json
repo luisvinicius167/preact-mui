@@ -5,6 +5,7 @@
   "main": "dist/preact-mui.min.js",
   "jsnext:main": "dist/preact-mui.js",
   "scripts": {
+    "build:index": "rollup -c rollup.config.index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Luis Vinicius",
