@@ -11,7 +11,7 @@ export default {
     'preact', 'preact-render-to-string'
   ],
   globals: {
-    preact: 'Preact', 'preact-render-to-string': 'preact-render-to-string'
+    preact: 'Preact', renderString: 'preact-render-to-string'
     },
   moduleName: `${process.env.entry}`,
   plugins : [

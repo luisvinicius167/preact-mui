@@ -1,9 +1,9 @@
 {
   "name": "preact-mui",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Preact MUI CSS Components.",
   "main": "lib/index.js",
-  "jsnext:main": "lib/preact-mui.min.js",
+  "jsnext:main": "lib/index.js",
   "files": [
     "lib/appbar.js",
     "lib/button.js",
