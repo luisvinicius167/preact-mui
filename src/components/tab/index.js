@@ -15,7 +15,7 @@ export default class Tab extends Component {
    let activeClass = 'mui--is-active';
    return (
       <li {...props}>
-        <a data-mui-toggle="tab" data-mui-controls={value}> {label} </a>
+        <a data-mui-toggle="tab" data-mui-controls={value}> {children} </a>
       </li>
    )
  }
