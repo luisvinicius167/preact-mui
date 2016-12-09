@@ -1,9 +1,30 @@
 {
   "name": "preact-mui",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Preact MUI CSS Components.",
-  "main": "dist/preact-mui.min.js",
-  "jsnext:main": "dist/preact-mui.js",
+  "main": "lib/index.js",
+  "jsnext:main": "lib/preact-mui.min.js",
+  "files": [
+    "lib/appbar.js",
+    "lib/button.js",
+    "lib/checkbox.js",
+    "lib/col.js",
+    "lib/container.js",
+    "lib/divider.js",
+    "lib/dropdown.js",
+    "lib/dropdown-item.js",
+    "lib/form.js",
+    "lib/input.js",
+    "lib/modal.js",
+    "lib/option.js",
+    "lib/panel.js",
+    "lib/radio.js",
+    "lib/row.js",
+    "lib/select.js",
+    "lib/tab.js",
+    "lib/tabs.js",
+    "lib/textarea.js"
+  ],
   "scripts": {
     "build:index": "rollup -c rollup.config.index.js",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -4,14 +4,16 @@ import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 
 export default {
-  entry : `src/index.js`,
-  dest : `dist/preact-mui.js`,
+  entry : `src/components/index.js`,
+  dest : `lib/index.js`,
   format : 'umd',
-  moduleName: `preactMui`,
+  moduleName : `preactMui`,
+  external : ['preact'],
+  globals : {
+    preact: 'Preact'
+  },
   plugins : [
-    nodeResolve({
-      jsnext: true
-    }),
+    nodeResolve({jsnext: true}),
     babel({
       babelrc: false,
       sourceMap: false,
@@ -28,16 +30,7 @@ export default {
       ]
     }),
 
-    commonjs({
-      exclude: [
-        'node_modules/**',
-      ],
-      extensions: [
-        '.js'
-      ],
-      ignoreGlobal: false,
-      sourceMap: false,
-    })
+    commonjs({exclude: ['node_modules/**'], extensions: ['.js'], ignoreGlobal: false, sourceMap: false})
 
   ]
 };

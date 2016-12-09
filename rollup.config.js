@@ -5,8 +5,14 @@ import replace from 'rollup-plugin-replace';
 
 export default {
   entry : `src/components/${process.env.entry}/index.js`,
-  dest : `dist/${process.env.entry}.js`,
+  dest : `lib/${process.env.entry}.js`,
   format : 'umd',
+  external: [
+    'preact'
+  ],
+  globals: {
+    preact: 'Preact',
+    },
   moduleName: `${process.env.entry}`,
   plugins : [
     nodeResolve({
@@ -17,7 +23,7 @@ export default {
       sourceMap: false,
       exclude: 'node_modules/**',
       presets: [
-        'es2015-minimal-rollup', 'stage-0'
+        'es2015-rollup', 'stage-1'
       ],
       plugins: [
         [
