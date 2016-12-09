@@ -1,6 +1,6 @@
 {
   "name": "preact-mui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Preact MUI CSS Components.",
   "main": "lib/index.js",
   "jsnext:main": "lib/preact-mui.min.js",
