@@ -11,10 +11,10 @@ import {h, Component} from 'preact';
  * @name Tab
  */ 
 export default class Tab extends Component {
- render({children, value, ...props}) {
+ render({value, label, ...props}) {
    return (
       <li {...props}>
-        <a data-mui-toggle="tab" data-mui-controls={value}> {children} </a>
+        <a data-mui-toggle="tab" data-mui-controls={value}> {label} </a>
       </li>
    )
  }
