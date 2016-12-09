@@ -8,10 +8,12 @@ export default {
   dest : `lib/index.js`,
   format : 'umd',
   moduleName : `preactMui`,
-  external : ['preact'],
-  globals : {
-    preact: 'Preact'
-  },
+  external: [
+    'preact', 'preact-render-to-string'
+  ],
+  globals: {
+    preact: 'Preact', 'preact-render-to-string': 'preact-render-to-string'
+    },
   plugins : [
     nodeResolve({jsnext: true}),
     babel({

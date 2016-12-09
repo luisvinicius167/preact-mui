@@ -8,10 +8,10 @@ export default {
   dest : `lib/${process.env.entry}.js`,
   format : 'umd',
   external: [
-    'preact'
+    'preact', 'preact-render-to-string'
   ],
   globals: {
-    preact: 'Preact',
+    preact: 'Preact', 'preact-render-to-string': 'preact-render-to-string'
     },
   moduleName: `${process.env.entry}`,
   plugins : [
@@ -23,7 +23,7 @@ export default {
       sourceMap: false,
       exclude: 'node_modules/**',
       presets: [
-        'es2015-rollup', 'stage-1'
+        'es2015-rollup', 'stage-0'
       ],
       plugins: [
         [
