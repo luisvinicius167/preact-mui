@@ -1,6 +1,6 @@
 # preact-mui
 
-[![npm package](https://img.shields.io/badge/npm-v0.0.3-blue.svg)](https://www.npmjs.com/package/preact-mui)
+[![npm package](https://img.shields.io/badge/npm-v0.0.6-blue.svg)](https://www.npmjs.com/package/preact-mui)
 
 >The MUI CSS Preact library is designed from the ground up to be fast, small and developer-friendly. Using the MUI Preact library you can add MUI components to your Preact apps and switch seamlessly between MUI CSS/JS and MUI Preact even within the same app.
 
@@ -85,7 +85,7 @@ import {h, Component, render} from 'preact';
 import Appbar from 'preact-mui/lib/appbar';
 import Button from 'preact-mui/lib/button';
 import Container from 'preact-mui/lib/container';
-import Modal from 'preact-mui/lib/modal
+import Modal from 'preact-mui/lib/modal'
 
 /**
  * @class Modal
