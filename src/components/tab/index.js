@@ -11,8 +11,7 @@ import {h, Component} from 'preact';
  * @name Tab
  */ 
 export default class Tab extends Component {
- render({children, value, active, label, ...props}) {
-   let activeClass = 'mui--is-active';
+ render({children, value, ...props}) {
    return (
       <li {...props}>
         <a data-mui-toggle="tab" data-mui-controls={value}> {children} </a>
