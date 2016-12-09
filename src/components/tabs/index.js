@@ -4,13 +4,14 @@
  */
 'use strict';
 
-import {h, Component, render} from 'preact';
+
+import {h, Component} from 'preact';
+import render from 'preact-render-to-string';
 
 let _tabComponentsChildren = []
 
-function renderChildren(tab, index) {
+function renderChildren(tab) {
   _tabComponentsChildren.push(render(tab[0]));
-
 }
 
 /**
@@ -36,10 +37,10 @@ export default class Tabs extends Component {
       div.classList.add('mui-tabs__pane');
       div.id = tab.attributes.value;
       if (i === initialTabActive ) {
-        div.classList.add('mui--is-active');  
+        div.classList.add('mui--is-active');   
       }
 
-      div.appendChild(_tabComponentsChildren[i]);
+      div.innerHTML =  _tabComponentsChildren[i];
 
       this.base.insertAdjacentElement('afterend', div);
     });
