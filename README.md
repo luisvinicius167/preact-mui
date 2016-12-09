@@ -26,22 +26,31 @@ type="text/css" media="screen" />
 
 
 #### Using Components 
+
 ```javascript
-// ES6 syntax
+// Access components individually for smaller build files (RECOMMENDED)
+import Appbar from 'preact-mui/lib/appbar';
+import Button from 'preact-mui/lib/button';
+import Container from 'preact-mui/lib/container';
+
+// Access all components from preact-mui module
 import { Appbar, Button, Container } from 'preact-mui';
 
 // Preact-MUI also supports ES5 syntax
-var muicss = require('preact-mui');
-var Appbar = muicss.Appbar;
-var Button = muicss.Button;
-var Container = muicss.Container;
+var preactMui = require('preact-mui');
+var Appbar = preactMui.Appbar;
+var Button = preactMui.Button;
+var Container = preactMui.Container;
 ```
 
 #### Real life example:
 
 ```javascript
 import {h, Component, render} from 'preact';
-import { Appbar, Button, Container } from 'preact-mui';
+
+import Appbar from 'preact-mui/lib/appbar';
+import Button from 'preact-mui/lib/button';
+import Container from 'preact-mui/lib/container';
 
 class Example extends React.Component {
   render() {
@@ -73,8 +82,27 @@ Preact-MUI has the same API with React MUI, then you can check tre React API and
 
 ```javascript
 import {h, Component, render} from 'preact';
-import { Appbar, Button, Container, Modal } from 'preact-mui';
+import Appbar from 'preact-mui/lib/appbar';
+import Button from 'preact-mui/lib/button';
+import Container from 'preact-mui/lib/container';
+import Modal from 'preact-mui/lib/modal
 
+/**
+ * @class Modal
+ *
+ * @param { string } openedBy The element Id that when clicked, 
+ * will open the modal
+ *
+ * @param { string } closedBy The element Id that when clicked, 
+ * will close the modal
+ *
+ * @param { function } onClose The hanlder that will trigger, 
+ * when you close the Modal
+ *
+ * @param { string } position The position of container modal.
+ * Can be: center, centerLeft, centerRight, centerTop, centerBottom
+ * If you set some of these positions, the modal will appear on this position
+ */
 class Example extends React.Component {
   render() {
     return (
