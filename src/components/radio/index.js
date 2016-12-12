@@ -11,7 +11,7 @@ import {h, Component} from 'preact';
  * @name Radio
  */ 
 export default class Radio extends Component {
-  render({name, defaultChecked=false, label, disabled, ...props}){
+  render({name, defaultChecked=false, checked, label, disabled, ...props}){
     return (
     <div class="mui-radio">
       <label>
@@ -19,7 +19,7 @@ export default class Radio extends Component {
           {...props } 
           type="radio" 
           name={name}
-          checked={defaultChecked}
+          checked={defaultChecked || checked}
           disabled={disabled ? 'disabled':null}
         />
         {label}

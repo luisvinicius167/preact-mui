@@ -12,10 +12,15 @@ import Button from '../button';
  * @name Dropdown
  */ 
 export default class Dropdown extends Component {
-  render({label, color, alignMenu, children}){
+  render({label, color, size, variant, disabled, alignMenu, children, ...props}){
     return(
-      <div class="mui-dropdown">
-        <Button color={color} data-mui-toggle="dropdown">
+      <div class="mui-dropdown" {...props}>
+        <Button 
+          color={color} 
+          size={size} 
+          variant={variant} 
+          data-mui-toggle="dropdown"
+          disabled={disabled ? disabled : null}>
         {label}
         <span class="mui-caret"></span>
         </Button>

@@ -11,9 +11,9 @@ import {h, Component} from 'preact';
  * @name DropdownItem
  */ 
 export default class DropdownItem extends Component {
-  render({ link, children }) {
+  render({ link, children, ...props}) {
 		return (
-			<li><a href={link ? link : false}>{children}</a></li>          
+			<li {...props}><a href={link ? link : false}>{children}</a></li>          
 		)
   }
 }
