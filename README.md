@@ -1,6 +1,6 @@
 # preact-mui
 
-[![npm package](https://img.shields.io/badge/npm-v0.0.9-blue.svg)](https://www.npmjs.com/package/preact-mui)
+[![npm package](https://img.shields.io/badge/npm-v0.1.0-blue.svg)](https://www.npmjs.com/package/preact-mui)
 
 >The MUI CSS Preact library is designed from the ground up to be fast, small and developer-friendly. Using the MUI Preact library you can add MUI components to your Preact apps and switch seamlessly between MUI CSS/JS and MUI Preact even within the same app.
 
@@ -294,7 +294,6 @@ Read more: https://www.muicss.com/docs/v1/react/forms
 import Tabs from 'preact-mui/lib/tabs';
 
 <Tabs />
-  * {Integer} initialSelectedIndex=0
   * {Boolean} justified=false|true
 ```
 
@@ -306,6 +305,7 @@ Read more: https://www.muicss.com/docs/v1/react/tabs
 import Tab from 'preact-mui/lib/tab';
 
 <Tab />
+  * {Boolean} selected
   * {String} label
   * {String} value
 ```
