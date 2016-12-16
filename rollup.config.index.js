@@ -12,7 +12,7 @@ export default {
     'preact', 'preact-render-to-string'
   ],
   globals: {
-    preact: 'Preact', renderString: 'preact-render-to-string'
+    preact: 'Preact'
     },
   plugins : [
     nodeResolve({jsnext: true}),
