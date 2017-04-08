@@ -164,7 +164,7 @@ Read more: https://www.muicss.com/docs/v1/react/dropdowns
 ##### DropdownItem
 
 ```jsx
-import DropdownItem 'preact-mui/lib/dropdown-item';
+import DropdownItem from 'preact-mui/lib/dropdown-item';
 
 <DropdownItem />
   * {String} link
